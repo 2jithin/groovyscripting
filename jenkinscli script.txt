@@ -1,0 +1,9 @@
+echo "admin:usertokenfromjenkinsUI">cred
+java -jar jenkins-cli.jar -auth @cred -s http://localhost:8085 groovy = <<EOF
+import hudson.model.*
+import jenkins.model.*
+def user = User.get("<username>")
+if (user != null){
+    user.delete()
+}
+EOF

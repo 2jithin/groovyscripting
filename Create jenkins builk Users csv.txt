@@ -1,0 +1,10 @@
+# format id,name,password,email
+
+# examples:
+
+#user1,User One,pass1,user1@example.com
+#user2,User Two,pass2,user2@example.com
+#user3,User Three,pass3,user3@example.com
+
+echo "admin:usertokenfromjenkinsUI">cred
+java -jar jenkins-cli.jar -auth @cred  -s http://localhost:8085/ create-user < users.csv

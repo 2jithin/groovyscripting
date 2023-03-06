@@ -1,0 +1,13 @@
+# curl -O http://127.0.0.1:8080/jnlpJars/jenkins-cli.jar
+
+pass=`sudo cat /var/lib/jenkins/secrets/initialAdminPassword` && echo 'jenkins.model.Jenkins.instance.securityRealm.createAccount("user1", "password123")' | sudo java -jar jenkins-cli.jar -auth admin:$pass -s http://localhost:8080/ groovy =
+
+
+
+# Jenkins cli can be download using below command 
+
+curl -O http://127.0.0.1:8080/jnlpJars/jenkins-cli.jar
+
+# can be create user
+
+echo 'jenkins.model.Jenkins.instance.securityRealm.createAccount("test", "test123")' | java -jar ./jenkins-cli.jar -s "http://localhost:8080" -auth admin:admin123 -noKeyAuth groovy = –

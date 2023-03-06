@@ -1,0 +1,30 @@
+echo "ab:115be2cbe026e4df4d7a4a017b7c737aff">cred
+java -jar jenkins-cli.jar -auth @cred -s http://localhost:8085 groovy = <<EOF
+import hudson.model.*
+import jenkins.model.*
+Jenkins.instance.securityRealm.createAccount("Alistuser", "Alist@321")
+EOF
+
+
+
+java -jar jenkins-cli.jar -auth ab:115be2cbe026e4df4d7a4a017b7c737aff -s http://localhost:8085 groovy = <<EOF
+import hudson.model.*
+import jenkins.model.*
+Jenkins.instance.securityRealm.createAccount("Alistuser1", "Alist@321")
+EOF
+
+
+
+# also can run file using jenkinscli but cli file in the same directory its includes argument
+
+java -jar jenkins-cli.jar -auth @cred -s http://localhost:8085/ groovy = < user-creation.groovy testUser testPassword testEmail@gmail.com
+
+
+
+
+echo "admin:$pass">cred
+java -jar jenkins-cli.jar -auth @cred -s http://localhost:8080 groovy = <<EOF
+import hudson.model.*
+import jenkins.model.*
+Jenkins.instance.securityRealm.createAccount("Alistuser", "Alist@321")
+EOF
